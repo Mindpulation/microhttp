@@ -1,19 +1,19 @@
-const fastify = require('fastify')({
-  http2 : true
-});
+const { PORT } = require('./lib').env;
 
-fastify.register(require('./router/Find'),    {prefix:'/api/f'});
-fastify.register(require('./router/Insert'),  {prefix:'/api/i'});
-fastify.register(require('./router/Update'),  {prefix:'/api/u'});
-fastify.register(require('./router/Delete'),  {prefix:'/api/d'});
+const fastify = require('fastify')();
 
-const start = async () => {
-  try {
-    await fastify.listen(3000)    
-  } catch (err) {
+fastify.register(require('fastify-cors'));
+
+fastify.register(require('./router/Find'),    {prefix:'/api/find'});
+fastify.register(require('./router/Insert'),  {prefix:'/api/insert'});
+fastify.register(require('./router/Update'),  {prefix:'/api/update'});
+fastify.register(require('./router/Delete'),  {prefix:'/api/delete'});
+
+
+fastify.listen(PORT, function (err, address) {
+  if (err) {
     fastify.log.error(err)
     process.exit(1)
   }
-}
-
-start();
+  console.log(`This service running in PORT ${PORT}`);
+});
