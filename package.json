@@ -1,0 +1,14 @@
+{
+  "name": "microhttp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Manusiabodoh4/microhttp.git",
+  "author": "Reza Andriansyah <technoboth@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "fastify": "^3.9.1",
+    "fastify-cors": "^5.0.0",
+    "mongooo": "^1.1.5"
+  }
+}
