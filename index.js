@@ -1,7 +1,7 @@
 const { PORT } = require('./lib').env;
 
 const numCPU  = require('os').cpus().length;
-const fastify  = require('fastify')();
+const fastify = require('fastify')();
 const cluster = require('cluster');
 
 if(cluster.isMaster){
