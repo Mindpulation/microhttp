@@ -1,0 +1,3 @@
+Pada bagian "lib/setting/index.js" terdapat sebuah optFindOne
+yang memiliki response sebuah Object namun harus ditentukan untuk
+setiap properties yang akan dikeluarkan!

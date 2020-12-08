@@ -1,13 +1,20 @@
-const { deleteOne, deleteMany } = require('../lib').database;
+const lib = require('../lib');
+const { deleteOne, deleteMany } = lib.database;
+const { optDelete } = lib.opt;
+const res = lib.wrap;
 
 async function routesDelete(fastify){
 
-  fastify.post('/one', async function(request, reply) {
-      
+  fastify.delete('/one', optDelete ,async function(request) {
+    const {param} = request.body
+    const sta =  await deleteOne(param);
+    return res(sta);
   })
   
-  fastify.post('/many', async function(request, reply) {
-      
+  fastify.delete('/many', optDelete ,async function(request) {
+    const {param} = request.body
+    const sta =  await deleteMany(param);
+    return res(sta);
   })
   
 

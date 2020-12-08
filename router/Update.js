@@ -1,13 +1,20 @@
-const { updateOne, updateMany } = require('../lib').database;
+const lib = require('../lib');
+const { updateOne, updateMany } = lib.database;
+const { optUpdate } = lib.opt;
+const res = lib.wrap;
 
 async function routesUpdate(fastify){
 
-  fastify.post('/one', async function(request, reply) {
-      
+  fastify.put('/one', optUpdate ,async function(request) {
+    const {param, change} = request.body
+    const sta =  await updateOne(param, change);
+    return res(sta);
   })
 
-  fastify.post('/many', async function(request, reply) {
-      
+  fastify.put('/many', optUpdate ,async function(request) {
+    const {param, change} = request.body
+    const sta =  await updateMany(param, change);
+    return res(sta);
   })
 
 }
