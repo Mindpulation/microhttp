@@ -6,8 +6,8 @@ const res = lib.wrap;
 async function routesInsert(fastify){
 
   fastify.post('/one', optInsertOne ,async function(request) {
-    const {param} = request.body
-    const sta =  await insertOne(param);
+    const {param} = request.body    
+    const sta =  await insertOne(param);    
     return res(sta);
   })
 
