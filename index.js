@@ -9,6 +9,11 @@ if(cluster.isMaster){
     cluster.fork();
   }
 }else{
+
+  fastify.get('/', async (req, res)=>{
+    return {message:"Hello"};
+  });
+
   fastify.register(require('fastify-cors'));
   fastify.register(require('./router/Find'), {prefix:'/api/find'});
   fastify.register(require('./router/Insert'), {prefix:'/api/insert'});
